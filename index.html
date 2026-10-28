@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>탑TV | 매일 주식 라이브 무료 시청</title>
+<meta name="description" content="SBS Biz 방송 출연 전문가의 주식 라이브를 무료로. 카카오톡으로 신청 한 번이면 혜택이 바로 도착합니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{
+    --navy:#0D1526; --navy2:#16213A; --gold:#B8963A; --gold2:#E8CF82;
+    --ink:#111827; --sub:#374151; --line:#E5E7EB; --bg:#F7F5F0; --card:#FFFFFF;
+    --kakao:#FEE500; --kakaoInk:#191600; --red:#C8252C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    background:var(--bg);color:var(--ink);font-size:19px;line-height:1.65;word-break:keep-all;padding-bottom:104px}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:560px;margin:0 auto;padding:0 18px}
+  section{padding:40px 0}
+  h2{font-size:27px;line-height:1.38;font-weight:800;letter-spacing:-.02em}
+  .eyebrow{display:inline-block;font-size:17px;font-weight:800;color:var(--gold);margin-bottom:8px}
+  .muted{color:var(--sub);font-size:17px}
+
+  /* header */
+  .top{background:var(--navy);color:#fff}
+  .top .wrap{display:flex;align-items:center;height:60px}
+  .logo{font-weight:900;font-size:23px;letter-spacing:-.02em}
+  .logo b{color:var(--gold2)}
+
+  /* hero */
+  .hero{background:var(--navy);color:#fff;padding:22px 0 36px}
+  .hero h1{font-size:31px;line-height:1.36;font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+  .hero h1 em{font-style:normal;color:var(--gold2)}
+  .hero p.lead{color:#E2E6EE;font-size:18px;margin-bottom:20px}
+  .video{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:#0A101D;border:1px solid #2A3550}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .poster{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(135deg,#1B2847 0%,#0D1526 60%);text-align:center;padding:16px}
+  .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}
+  .play{position:relative;width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+  .play:after{content:"";margin-left:6px;border-left:22px solid var(--navy);border-top:14px solid transparent;border-bottom:14px solid transparent}
+  .poster span{position:relative;font-size:17px;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+  .unmute{position:absolute;left:10px;bottom:52px;z-index:2;border:0;border-radius:999px;background:rgba(0,0,0,.78);color:#fff;
+    font-family:inherit;font-size:17px;font-weight:800;padding:10px 16px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+  .live-dot{display:inline-flex;align-items:center;gap:7px;background:var(--red);color:#fff;font-size:16px;font-weight:800;padding:5px 13px;border-radius:999px;margin-bottom:14px}
+  .live-dot i{width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1.2s infinite}
+  @keyframes blink{50%{opacity:.25}}
+
+  /* CTA */
+  .cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:66px;border:0;border-radius:14px;
+    background:var(--kakao);color:var(--kakaoInk);font-size:21px;font-weight:800;text-decoration:none;cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,0,0,.12);font-family:inherit;letter-spacing:-.02em}
+  .cta:active{transform:translateY(1px)}
+  .cta svg{width:28px;height:28px;flex:none}
+  .nofrict{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;margin-top:14px;font-size:16px;font-weight:600;color:#E2E6EE}
+  .nofrict span:before{content:"✓ ";color:var(--gold2);font-weight:800}
+  .light .nofrict{color:var(--sub)}
+  .light .nofrict span:before{color:#1E7B4D}
+
+  /* hook */
+  .hook{background:#fff;border-bottom:1px solid var(--line)}
+  .hook h2{margin-bottom:6px}
+  .hook h2 mark{background:linear-gradient(transparent 60%,#FBE7A6 60%);color:inherit}
+
+  /* benefits */
+  .benefits{display:grid;gap:14px;margin-top:22px}
+  .bcard{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 16px}
+  .bnum{flex:none;width:40px;height:40px;border-radius:10px;background:var(--navy);color:var(--gold2);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:19px}
+  .bcard h3{font-size:21px;font-weight:800;line-height:1.38;margin-bottom:4px;letter-spacing:-.02em}
+  .bcard p{font-size:17px;color:var(--sub);line-height:1.55}
+  .tag{display:inline-block;font-size:15px;font-weight:800;color:var(--red);border:1px solid #F1C3C5;background:#FDF1F1;border-radius:6px;padding:1px 8px;margin-left:4px;vertical-align:2px}
+
+  /* schedule */
+  .sched{margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .srow{display:flex;align-items:center;gap:14px;padding:18px 16px;border-top:1px solid var(--line)}
+  .srow:first-child{border-top:0}
+  .stime{flex:none;width:92px;text-align:center}
+  .stime b{display:block;font-size:25px;font-weight:900;color:var(--navy);line-height:1.15}
+  .stime small{font-size:16px;color:var(--sub);font-weight:700}
+  .sinfo h3{font-size:20px;font-weight:800;line-height:1.38}
+  .sinfo p{font-size:17px;color:var(--sub);line-height:1.5}
+  .chip{display:inline-block;font-size:15px;font-weight:800;padding:2px 9px;border-radius:6px;margin-right:4px;margin-top:6px}
+  .chip.sbs{background:var(--navy);color:var(--gold2)}
+  .chip.free{background:#E8F5EE;color:#1E7B4D}
+
+  /* trust */
+  .trust{background:var(--navy);color:#fff}
+  .trust .eyebrow{color:var(--gold2)}
+  .experts:empty{display:none}
+  .trust .muted{color:#C8CEDA}
+  .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+  .tbox{background:var(--navy2);border:1px solid #2A3550;border-radius:14px;padding:20px 12px;text-align:center}
+  .tbox b{display:block;font-size:30px;font-weight:900;color:var(--gold2);line-height:1.2}
+  .tbox span{font-size:17px;color:#E2E6EE;line-height:1.45;display:block;margin-top:6px}
+  .tbox.wide{grid-column:1/-1;text-align:left;display:flex;gap:12px;align-items:center;padding:20px 16px}
+  .tbox.wide b{font-size:20px;color:#fff;line-height:1.4}
+  .tbox.wide a{color:var(--gold2);font-size:17px;font-weight:800;white-space:nowrap}
+  .experts{display:grid;gap:12px;margin-top:14px}
+  .expert{display:flex;gap:14px;align-items:center;background:var(--navy2);border:1px solid #2A3550;border-radius:14px;padding:16px}
+  .avatar{flex:none;width:64px;height:64px;border-radius:50%;background:#2A3550;color:var(--gold2);font-weight:900;font-size:24px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .expert h3{font-size:20px;font-weight:800}
+  .expert p{font-size:17px;color:#E2E6EE;line-height:1.5}
+
+  /* steps */
+  .steps{display:grid;gap:12px;margin-top:20px;counter-reset:s}
+  .step{display:flex;gap:16px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px}
+  .step:before{counter-increment:s;content:counter(s);flex:none;width:40px;height:40px;border-radius:50%;background:var(--kakao);color:var(--kakaoInk);font-weight:900;font-size:20px;display:flex;align-items:center;justify-content:center}
+  .step b{font-size:21px}
+  .step p{font-size:17px;color:var(--sub)}
+
+  .phone{display:block;text-align:center;margin-top:18px;font-size:18px;color:var(--sub);line-height:1.6}
+  .phone a{display:inline-block;margin-top:4px;font-size:24px;font-weight:900;color:var(--navy);text-decoration:underline;text-underline-offset:4px}
+
+  /* footer */
+  footer{background:#E9E6DE;color:#3F3F3F;font-size:16px;line-height:1.7;padding:30px 0 34px}
+  footer h4{font-size:17px;color:#222;margin:16px 0 6px}
+  footer dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px}
+  footer dt{color:#555}
+  .warn{background:#fff;border:1px solid #D9D4C7;border-radius:10px;padding:14px;margin-top:10px;color:#333}
+
+  /* sticky */
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(247,245,240,.96);backdrop-filter:blur(6px);
+    border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .25s}
+  .sticky.on{transform:none}
+  .sticky .cta{max-width:528px;margin:0 auto;min-height:62px;font-size:21px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">TOP<b>TV</b></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="live-dot"><i></i>매일 오전 11시 LIVE</div>
+    <h1>나홀로 주식 말고,<br><em>SBS Biz 출연 전문가</em>들과<br>무료로 동참해 보세요</h1>
+    <p class="lead">실제 방송에서 시장과 종목을 어떻게 설명하는지 직접 확인해 보세요.</p>
+
+    <div class="video" id="video" role="button" aria-label="방송 영상 재생" tabindex="0">
+      <div class="poster" id="poster">
+        <img id="posterImg" alt="" hidden>
+        <div class="play"></div>
+        <span id="posterLabel">방송 미리보기</span>
+      </div>
+    </div>
+
+    <div style="margin-top:20px">
+      <a class="cta js-cta" href="#" data-pos="hero"></a>
+      <div class="nofrict"><span>이름·전화번호 입력 없음</span><span>회원가입 없음</span><span>무료</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOOK + BENEFITS -->
+<section class="hook light">
+  <div class="wrap">
+    <span class="eyebrow">무료 혜택 4가지</span>
+    <h2><mark>신청 한 번</mark>이면<br>아래 혜택이 카톡으로 바로 도착합니다</h2>
+    <p class="muted" style="margin-top:6px">당근에서 들어오신 분들께 드리는 혜택입니다.</p>
+
+    <div class="benefits">
+      <div class="bcard"><div class="bnum">1</div><div>
+        <h3>방송 히든종목 공개 <span class="tag">인기</span></h3>
+        <p>SBS Biz 고수외전·필살기에서 소개한 전문가 히든종목을 카톡으로 받아보세요.</p></div></div>
+      <div class="bcard"><div class="bnum">2</div><div>
+        <h3>매일 주식 라이브 시청</h3>
+        <p>오전 11시 장중 라이브, 오후 4시 유튜브 방송을 모두 무료로 시청할 수 있습니다.</p></div></div>
+      <div class="bcard"><div class="bnum">3</div><div>
+        <h3>하반기 핵심자료 PDF</h3>
+        <p>김호영 대표 강연회 자료 「AI 전력인프라 슈퍼사이클」을 그대로 드립니다.</p></div></div>
+      <div class="bcard"><div class="bnum">4</div><div>
+        <h3>VIP 7일 체험권</h3>
+        <p>유료 회원 서비스를 7일간 먼저 경험해 보세요. 자동 결제는 없습니다.</p></div></div>
+    </div>
+
+    <div style="margin-top:22px">
+      <a class="cta js-cta" href="#" data-pos="benefits"></a>
+      <div class="nofrict"><span>버튼 한 번</span><span>입력 없음</span><span>언제든 차단 가능</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">방송 편성표</span>
+    <h2>평일엔 매일, 저녁엔 SBS Biz에서</h2>
+    <div class="sched">
+      <div class="srow"><div class="stime"><b>11:00</b><small>매일</small></div><div class="sinfo">
+        <h3>장중 주식 라이브</h3><p>김호영 대표 진행 · 틱톡·텔레그램</p><span class="chip free">무료</span></div></div>
+      <div class="srow"><div class="stime"><b>16:00</b><small>매일</small></div><div class="sinfo">
+        <h3>장 마감 유튜브 방송</h3><p>탑TV 소속 전문가 진행</p><span class="chip free">무료</span></div></div>
+      <div class="srow"><div class="stime"><b>20:30</b><small>월요일</small></div><div class="sinfo">
+        <h3>고수외전</h3><p>SBS Biz 본방송 · 화·일 재방송</p><span class="chip sbs">SBS Biz</span></div></div>
+      <div class="srow"><div class="stime"><b>20:30</b><small>금요일</small></div><div class="sinfo">
+        <h3>필살기</h3><p>SBS Biz 본방송 · 토·일 재방송</p><span class="chip sbs">SBS Biz</span></div></div>
+    </div>
+    <p class="muted" style="margin-top:12px;font-size:16px">※ 방송 일정은 편성 사정에 따라 변경될 수 있습니다. 변경 시 카카오톡 채널로 안내드립니다.</p>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="wrap">
+    <span class="eyebrow">믿을 수 있는 이유</span>
+    <h2>공중파 경제방송에<br>매주 고정 출연합니다</h2>
+    <div class="tgrid">
+      <div class="tbox"><b>2개</b><span>SBS Biz<br>고정 출연 프로그램</span></div>
+      <div class="tbox"><b>14인</b><span>방송 출연<br>전문가 로테이션</span></div>
+      <div class="tbox"><b>약 30명</b><span>탑TV 소속<br>전문가</span></div>
+      <div class="tbox"><b>주 6회</b><span>본방·재방<br>방송 노출</span></div>
+      <div class="tbox wide"><div style="flex:1"><b>금융감독원 신고 유사투자자문업자</b>
+        <span id="fssNo" style="margin-top:2px"></span></div>
+        <a id="fssLink" href="#" target="_blank" rel="noopener">조회하기 ›</a></div>
+    </div>
+    <div class="experts" id="experts"></div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="light">
+  <div class="wrap">
+    <span class="eyebrow">이용 방법</span>
+    <h2>10초면 끝납니다</h2>
+    <div class="steps">
+      <div class="step"><div><b>노란 버튼으로 신청</b><p>입력할 것 없이 한 번이면 됩니다.</p></div></div>
+      <div class="step"><div><b>카톡으로 혜택 도착</b><p>히든종목·방송·PDF·체험권</p></div></div>
+    </div>
+    <div style="margin-top:20px">
+      <a class="cta js-cta" href="#" data-pos="steps"></a>
+    </div>
+    <p class="phone" id="phoneWrap">통화로 간편하게 문의주셔도 됩니다<br><a id="phoneLink" href="#"></a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h4>투자 유의사항</h4>
+    <div class="warn">
+      당사는 금융투자업자가 아닌 유사투자자문업자로 개별적인 투자상담과 자금운용이 불가합니다.
+      당사가 제공하는 정보는 투자 판단의 참고자료이며, 투자 결과에 따라 원금 손실이 발생할 수 있고 그 책임은 투자자 본인에게 귀속됩니다.
+      과거의 방송 기록이나 수익률은 미래의 수익을 보장하지 않습니다.
+    </div>
+    <h4>운영 정보</h4>
+    <dl id="bizInfo"></dl>
+    <p style="margin-top:14px">Copyright © TOPTV. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky"><a class="cta js-cta" href="#" data-pos="sticky"></a></div>
+
+<script>
+/* ============================================================
+   ▼ 여기만 수정하세요 (설정값)
+   ============================================================ */
+var CONFIG = {
+  // 카카오톡 채널 친구추가 URL — 채널 관리자센터 > 채널 URL 뒤에 /friend 를 붙이면 바로 '채널 추가' 화면이 열립니다
+  // 예: "https://pf.kakao.com/_AbCdE/friend"
+  KAKAO_ADD_URL: "https://pf.kakao.com/_XXXXXX/friend",
+
+  CTA_TEXT: "카카오톡으로 무료 신청하기",
+
+  // 상단 영상: 유튜브 영상 ID (youtu.be/ 뒤 11자리). 페이지 열리면 음소거 상태로 자동재생
+  YOUTUBE_ID: "82vn_4V2PHM",
+
+  // 금감원 유사투자자문업 신고번호 (비우면 줄 자체 숨김)
+  FSS_NO: "",
+  FSS_LINK: "https://www.fss.or.kr",
+
+  // 보조 전화 (비우면 문구 숨김)
+  PHONE: "02-847-4700",
+
+  // 전문가 카드 — photo는 이미지 URL(비우면 이름 첫 글자 표시)
+  EXPERTS: [
+    // { name: "OOO 대표", desc: "SBS Biz 고수외전 출연", photo: "" },
+  ],
+
+  // 사업자 정보 (값이 빈 항목은 표시 안 됨)
+  BIZ: [
+    ["상호", "주식회사 티오피홀딩스"],
+    ["대표자", ""],
+    ["사업장 주소", ""],
+    ["사업자등록번호", ""],
+    ["유사투자자문업 신고번호", ""],
+    ["고객센터", "02-847-4700"]
+  ],
+
+  // 클릭 추적: 당근 픽셀·GA 등 연결 시 여기서 호출 (pos = hero/benefits/steps/sticky)
+  onCtaClick: function (pos) {
+    // 예) if (window.gtag) gtag('event','kakao_add_click',{position:pos});
+  }
+};
+/* ============================================================ */
+
+(function () {
+  var KAKAO_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#191600" d="M12 3C6.48 3 2 6.52 2 10.86c0 2.8 1.86 5.26 4.66 6.65l-.95 3.48c-.08.3.26.54.52.37l4.15-2.75c.53.06 1.07.1 1.62.1 5.52 0 10-3.52 10-7.85S17.52 3 12 3z"/></svg>';
+
+  // UTM 등 유입 파라미터를 카톡 링크에 그대로 넘기지는 않음(카카오가 무시) — 클릭 추적은 onCtaClick 사용
+  document.querySelectorAll('.js-cta').forEach(function (a) {
+    a.href = CONFIG.KAKAO_ADD_URL;
+    a.innerHTML = KAKAO_SVG + '<span>' + CONFIG.CTA_TEXT + '</span>';
+    a.addEventListener('click', function () {
+      try { CONFIG.onCtaClick(a.getAttribute('data-pos')); } catch (e) {}
+    });
+  });
+
+  // 영상
+  var video = document.getElementById('video');
+  if (CONFIG.YOUTUBE_ID) {
+    // 브라우저 정책상 '소리 있는 자동재생'은 막혀 있어 음소거로 자동재생 → '소리 켜기' 버튼으로 해제
+    var id = CONFIG.YOUTUBE_ID;
+    video.style.cursor = 'default';
+    video.removeAttribute('role');
+    video.removeAttribute('tabindex');
+    video.innerHTML = '<iframe id="yt" src="https://www.youtube.com/embed/' + id +
+      '?autoplay=1&mute=1&playsinline=1&loop=1&playlist=' + id + '&rel=0&modestbranding=1&enablejsapi=1"' +
+      ' allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="방송 영상"></iframe>' +
+      '<button type="button" class="unmute" id="unmute">🔊 소리 켜기</button>';
+    var yt = document.getElementById('yt');
+    var send = function (fn, args) {
+      try { yt.contentWindow.postMessage(JSON.stringify({ event: 'command', func: fn, args: args || [] }), '*'); } catch (e) {}
+    };
+    document.getElementById('unmute').addEventListener('click', function () {
+      send('unMute'); send('setVolume', [100]); send('playVideo');
+      this.remove();
+    });
+  } else {
+    video.style.cursor = 'default';
+  }
+
+  // 금감원
+  if (CONFIG.FSS_NO) {
+    document.getElementById('fssNo').textContent = '신고번호 ' + CONFIG.FSS_NO;
+  }
+  document.getElementById('fssLink').href = CONFIG.FSS_LINK;
+
+  // 전화
+  if (CONFIG.PHONE) {
+    var p = document.getElementById('phoneLink');
+    p.textContent = CONFIG.PHONE;
+    p.href = 'tel:' + CONFIG.PHONE.replace(/[^0-9]/g, '');
+  } else {
+    document.getElementById('phoneWrap').hidden = true;
+  }
+
+  // 전문가
+  var ex = document.getElementById('experts');
+  CONFIG.EXPERTS.forEach(function (e) {
+    var d = document.createElement('div');
+    d.className = 'expert';
+    var av = document.createElement('div');
+    av.className = 'avatar';
+    if (e.photo) { var im = document.createElement('img'); im.src = e.photo; im.alt = e.name; av.appendChild(im); }
+    else { av.textContent = e.name.charAt(0); }
+    var t = document.createElement('div');
+    var h = document.createElement('h3'); h.textContent = e.name;
+    var ds = document.createElement('p'); ds.textContent = e.desc;
+    t.appendChild(h); t.appendChild(ds);
+    d.appendChild(av); d.appendChild(t);
+    ex.appendChild(d);
+  });
+
+  // 사업자 정보
+  var dl = document.getElementById('bizInfo');
+  CONFIG.BIZ.forEach(function (r) {
+    if (!r[1]) return;
+    var dt = document.createElement('dt'); dt.textContent = r[0];
+    var dd = document.createElement('dd'); dd.textContent = r[1];
+    dl.appendChild(dt); dl.appendChild(dd);
+  });
+
+  // 하단 고정 CTA: 히어로 버튼이 화면에서 사라지면 노출
+  var sticky = document.getElementById('sticky');
+  var heroCta = document.querySelector('.hero .js-cta');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) {
+      sticky.classList.toggle('on', !en[0].isIntersecting);
+    }).observe(heroCta);
+  } else {
+    sticky.classList.add('on');
+  }
+})();
+</script>
+</body>
+</html>
